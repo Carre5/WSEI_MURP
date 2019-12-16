@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Company Dashboard";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@User.Identity.Name Dashboard</h1>
+</div>
+
+<a href=@Url.Action("Order")>Zamówienia</a>
