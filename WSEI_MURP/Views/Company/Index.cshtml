@@ -3,7 +3,19 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">@User.Identity.Name Dashboard</h1>
+    <h1 class="display-4">Company Dashboard</h1>
+    <h4>Hello, @User.Identity.Name !</h4>
 </div>
 
-<a href=@Url.Action("Order")>Zamówienia</a>
+<div class="list-group">
+    <a 
+       class="list-group-item list-group-item-action" 
+       asp-area="" 
+       asp-controller="Company" 
+       asp-action="Cars"> Cars</a>
+    <a 
+       class="list-group-item list-group-item-action" 
+       asp-area="" 
+       asp-controller="Company" 
+       asp-action="Order"> Orders</a>
+</div>

@@ -8,7 +8,6 @@ C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\bin\Debug\netcoreapp2.2\WSEI_MU
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\bin\Debug\netcoreapp2.2\WSEI_MURP.pdb
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\bin\Debug\netcoreapp2.2\WSEI_MURP.Views.dll
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\bin\Debug\netcoreapp2.2\WSEI_MURP.Views.pdb
-C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\WSEI_MURP.csprojAssemblyReference.cache
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\WSEI_MURP.RazorAssemblyInfo.cache
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\WSEI_MURP.RazorAssemblyInfo.cs
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\WSEI_MURP.AssemblyInfoInputs.cache
@@ -36,3 +35,6 @@ C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\V
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Company\Index.cshtml.g.cs
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Company\Order.cshtml.g.cs
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Shared\AddCar.cshtml.g.cs
+C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Company\AddCar.cshtml.g.cs
+C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Company\Cars.cshtml.g.cs
+C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\WSEI_MURP.csprojAssemblyReference.cache

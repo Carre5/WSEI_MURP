@@ -3,7 +3,42 @@
     ViewData["Title"] = "Create Order";
 }
 
-<h1>Create</h1>
+<h1>Create Order</h1>
 
-
+<form asp-action="CreateOrder">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="CarId" class="control-label"></label>
+        <select asp-for="CarId" class="form-control">
+            @foreach (var car in ViewBag.Cars)
+            {
+                <option value="@car.RegistrationNumber">@car.Brand @car.Model @car.RegistrationNumber</option>
+            }
+        </select>
+        <span asp-validation-for="CarId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Localization" class="control-label"></label>
+        <input asp-for="Localization" class="form-control" />
+        <span asp-validation-for="Localization" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DriverRequired" class="control-label"></label>
+        <input asp-for="DriverRequired" class="form-control" />
+        <span asp-validation-for="DriverRequired" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
 

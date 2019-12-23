@@ -34,15 +34,26 @@ namespace WSEI_MURP
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            #region DataContexts
             services.AddDbContext<IdentityDataContext>(options =>
             {
                 var connectionString = Configuration.GetConnectionString("IdentityDataContext");
                 options.UseSqlServer(connectionString);
             });
+            services.AddDbContext<CarDataContext>(options =>
+            {
+                var connectionString = Configuration.GetConnectionString("CarDataContext");
+                options.UseSqlServer(connectionString);
+            });
+            services.AddDbContext<OrderDataContext>(options =>
+            {
+                var connectionString = Configuration.GetConnectionString("OrderDataContext");
+                options.UseSqlServer(connectionString);
+            });
+            #endregion
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityDataContext>();
-
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

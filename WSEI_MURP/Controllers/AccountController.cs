@@ -48,7 +48,7 @@ namespace WSEI_MURP.Controllers
             }
 
             if (string.IsNullOrWhiteSpace(returnUrl))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Company");
 
             return Redirect(returnUrl);
         }
