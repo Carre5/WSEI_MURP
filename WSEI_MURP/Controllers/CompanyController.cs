@@ -12,10 +12,6 @@ namespace MoveURPack.Controllers
     [Authorize]
     public class CompanyController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         //private readonly CompanyDataContext db;
         private readonly OrderDataContext orderDB;
         private readonly CarDataContext carDB;
@@ -26,6 +22,14 @@ namespace MoveURPack.Controllers
             this.carDB = carDB;
 
             fillData();
+        }
+
+        public IActionResult Index()
+        {
+            ViewBag.Orders = orderDB.Orders
+                .Where(x => x.CompanyEmail == User.Identity.Name)
+                .ToArray();
+            return View();
         }
 
         public IActionResult Order()
@@ -54,7 +58,7 @@ namespace MoveURPack.Controllers
         public IActionResult AddCar(CarModel car)
         {
             car.CompanyEmail = User.Identity.Name;
-            car.Status = "Free";
+            car.Status = "FREE";
             carDB.Cars.Add(car);
             carDB.SaveChanges();
 
@@ -68,7 +72,7 @@ namespace MoveURPack.Controllers
             ViewBag.Cars = carDB.Cars
                 .Where(x => x.CompanyEmail == User.Identity.Name)
                 .ToArray();
-            return RedirectToAction("Order");
+            return View();
         }
 
         [HttpPost]
@@ -76,11 +80,48 @@ namespace MoveURPack.Controllers
         {
             order.CreationDate = DateTime.Now;
             order.CompanyEmail = User.Identity.Name;
-            order.Status = "New";
+            order.Status = "NEW";
+
+            int orderAmount = orderDB.Orders.Where(x => x.CompanyEmail == User.Identity.Name).ToArray().Length;
+            orderAmount++;
+
+            order.OrderID = DateTime.Now.ToString("yyyymmdd") + orderAmount.ToString();
 
             orderDB.Orders.Add(order);
             orderDB.SaveChanges();
-            return RedirectToAction();
+            return RedirectToAction("Order");
+        }
+
+        [HttpGet]
+        public IActionResult PublishOrder(string orderId)
+        {
+            var result = orderDB.Orders.SingleOrDefault(x => x.OrderID == orderId);
+
+            if (result != null)
+            {
+                result.Status = "READY";
+                orderDB.SaveChanges();
+            }
+
+            //TODO: Change car status to BUSY at order
+
+            return RedirectToAction("Order");
+        }
+
+        [HttpGet]
+        public IActionResult UnpublishOrder(string orderId)
+        {
+            var result = orderDB.Orders.SingleOrDefault(x => x.OrderID == orderId);
+
+            if (result != null)
+            {
+                result.Status = "NEW";
+                orderDB.SaveChanges();
+            }
+
+            //TODO: Change car status to FREE at order
+
+            return RedirectToAction("Order");
         }
 
         public IActionResult RegisterCompany()

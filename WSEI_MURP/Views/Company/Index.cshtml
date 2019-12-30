@@ -1,4 +1,5 @@
-﻿@{
+﻿@using WSEI_MURP.Models.DataModels
+@{
     ViewData["Title"] = "Company Dashboard";
 }
 
@@ -7,15 +8,35 @@
     <h4>Hello, @User.Identity.Name !</h4>
 </div>
 
-<div class="list-group">
-    <a 
-       class="list-group-item list-group-item-action" 
-       asp-area="" 
-       asp-controller="Company" 
-       asp-action="Cars"> Cars</a>
-    <a 
-       class="list-group-item list-group-item-action" 
-       asp-area="" 
-       asp-controller="Company" 
-       asp-action="Order"> Orders</a>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action"
+                   asp-area=""
+                   asp-controller="Company"
+                   asp-action="Cars"> Cars</a>
+                <a class="list-group-item list-group-item-action"
+                   asp-area=""
+                   asp-controller="Company"
+                   asp-action="Order"> Orders</a>
+            </div>
+        </div>
+        <div class="col-9">
+            <ul class="list-group">
+                @foreach (OrderModel order in ViewBag.Orders)
+                {
+                <li class="list-group-item">
+                    <div class="media">
+                        <img src="..." class="mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">ORDER @order.OrderID</h5>
+                            @order.Localization @order.Status
+                        </div>
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
 </div>
