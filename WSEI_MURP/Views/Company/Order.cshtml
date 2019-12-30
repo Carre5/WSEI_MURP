@@ -1,12 +1,35 @@
-﻿@model WSEI_MURP.Models.DataModels.OrderModel
+﻿@using WSEI_MURP.Models.DataModels;
 @{
     ViewData["Title"] = "Orders";
 }
 
 <h1>Orders</h1>
+<a class="nav-link text-dark" asp-area="" asp-controller="Company" asp-action="CreateOrder">Add Order</a>
+@if (ViewBag.Orders.Length == 0)
+{
+    <div class="alert alert-light" role="alert">
+        There is no orders associated with your company.
+    </div>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (OrderModel order in ViewBag.Orders)
+        {
+        <li class="list-group-item">
+            @order.Localization @order.Description @order.Status @order.OrderID
 
-<p>@Model.User.UserName</p>
-<p>@Model.CreationDate</p>
-<p>@Model.Company.CompanyName</p>
-
-
+            @if (order.Status == "NEW")
+            {
+                <a class="btn btn-outline-success"
+                   href="@Url.Action("PublishOrder","Company", new { orderId = order.OrderID })" role="button">Publish</a>
+            }
+            else if (order.Status == "READY")
+            {
+                <a class="btn btn-outline-danger"
+                   href="@Url.Action("UnpublishOrder","Company", new { orderId = order.OrderID })" role="button">Unpublish</a>
+            }
+        </li>
+        }
+    </ul>
+}

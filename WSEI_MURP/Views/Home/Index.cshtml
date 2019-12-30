@@ -1,8 +1,21 @@
-﻿@{
+﻿@using WSEI_MURP.Models.DataModels
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+    <ul class="list-group">
+        @foreach (OrderModel order in ViewBag.Orders)
+        {
+            <li class="list-group-item">
+                <div class="media">
+                    <img src="..." class="mr-3" alt="...">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">ORDER @order.OrderID</h5>
+                        @order.Localization
+                        <a class="btn btn-primary" href="@Url.Action("Order","Home", new { id = order.OrderID })" role="button">Open</a>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>

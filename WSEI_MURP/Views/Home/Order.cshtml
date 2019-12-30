@@ -1,0 +1,22 @@
+﻿@using WSEI_MURP.Models.DataModels
+@{
+    ViewData["Title"] = "Single Order Page";
+}
+
+
+
+
+    <div class="card">
+        <h5 class="card-header">Order: @ViewBag.Order.OrderID</h5>
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <h6 class="card-subtitle mb-2 text-muted">@ViewBag.Order.Localization</h6>
+            <h6 class="card-subtitle mb-2 text-muted">CarID: @ViewBag.Order.CarId</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Status: @ViewBag.Order.Status</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Price: @ViewBag.Order.Price$</h6>
+            <p class="card-text">
+                TODO: Show single order with all available content for anonymous user and create buttons and actions to reserve order to user after sending email address etc.
+            </p>
+            <a href="#" class="btn btn-primary">Choose Me!</a>
+        </div>
+    </div>
