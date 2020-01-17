@@ -17,7 +17,7 @@ else
         @foreach (OrderModel order in ViewBag.Orders)
         {
         <li class="list-group-item">
-            @order.Localization @order.Description @order.Status @order.OrderID
+            @order.Localization @order.Description @order.Status @order.OrderID 
 
             @if (order.Status == "NEW")
             {
@@ -28,6 +28,13 @@ else
             {
                 <a class="btn btn-outline-danger"
                    href="@Url.Action("UnpublishOrder","Company", new { orderId = order.OrderID })" role="button">Unpublish</a>
+            }
+            @if(order.UserRating == 0){
+                <p>There is no User Rating yet!</p>
+            }
+            else
+            {
+                <p>User rate this one as @order.UserRating</p>
             }
         </li>
         }

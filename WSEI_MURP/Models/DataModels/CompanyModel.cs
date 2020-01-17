@@ -11,8 +11,8 @@ namespace WSEI_MURP.Models.DataModels
         public string CompanyName { get; set; }
         public string CompanyAddress { get; set; }
         public string EmailAddress { get; set; }
-        public string Password { get; set; }
-        public string RepeatedPassword { get; set; }
         public string TaxNumber { get; set; }
+        public int CompanyRatingScore { get; set; }
+        public int CompanyRatingAmount { get; set; }
     }
 }

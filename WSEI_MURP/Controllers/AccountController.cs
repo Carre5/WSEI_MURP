@@ -48,7 +48,7 @@ namespace WSEI_MURP.Controllers
             }
 
             if (string.IsNullOrWhiteSpace(returnUrl))
-                return RedirectToAction("Index", "Company");
+                return RedirectToAction("Index", "User");
 
             return Redirect(returnUrl);
         }
@@ -90,6 +90,32 @@ namespace WSEI_MURP.Controllers
                     ModelState.AddModelError("", error);
                 }
                 return View();
+            }
+
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RegisterCompany(string email = null, string password = null)
+        {
+            if (email != null && password != null)
+            {
+                var newUser = new IdentityUser
+                {
+                    Email = email,
+                    UserName = email
+                };
+
+                var result = await userManager.CreateAsync(newUser, password);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors.Select(x => x.Description))
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                    return View();
+                }
             }
 
             return RedirectToAction("Login");

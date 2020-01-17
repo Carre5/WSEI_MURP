@@ -4,31 +4,48 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WSEI_MURP.Controllers;
+using WSEI_MURP.Models.Account;
 using WSEI_MURP.Models.DataContext;
 using WSEI_MURP.Models.DataModels;
+using WSEI_MURP.Models.ViewModels;
 
 namespace MoveURPack.Controllers
 {
     [Authorize]
     public class CompanyController : Controller
     {
-        //private readonly CompanyDataContext db;
         private readonly OrderDataContext orderDB;
         private readonly CarDataContext carDB;
-        public CompanyController(CarDataContext carDB, OrderDataContext orderDB)
+        private readonly CompanyDataContext companyDB;
+        public CompanyController(CarDataContext carDB, OrderDataContext orderDB, CompanyDataContext companyDB)
         {
-            //this.db = db;
             this.orderDB = orderDB;
             this.carDB = carDB;
-
-            fillData();
+            this.companyDB = companyDB;
         }
 
         public IActionResult Index()
         {
+            var nameResult = companyDB.Company.FirstOrDefault(x => x.EmailAddress == User.Identity.Name);
+
+            if (nameResult != null)
+            {
+                ViewBag.Company_Name = nameResult.CompanyName;
+                ViewBag.Company_Feadback_Total_Score = nameResult.CompanyRatingScore;
+                ViewBag.Company_Feedback_Amount = nameResult.CompanyRatingAmount;
+            }
+            else
+            {
+                ViewBag.Company_Name = User.Identity.Name;
+                ViewBag.Company_Feadback_Total_Score = -1;
+                ViewBag.Company_Feedback_Amount = -1;
+            }
+
             ViewBag.Orders = orderDB.Orders
                 .Where(x => x.CompanyEmail == User.Identity.Name)
                 .ToArray();
+
             return View();
         }
 
@@ -86,6 +103,7 @@ namespace MoveURPack.Controllers
             orderAmount++;
 
             order.OrderID = DateTime.Now.ToString("yyyymmdd") + orderAmount.ToString();
+            order.UserRating = 0;
 
             orderDB.Orders.Add(order);
             orderDB.SaveChanges();
@@ -101,9 +119,16 @@ namespace MoveURPack.Controllers
             {
                 result.Status = "READY";
                 orderDB.SaveChanges();
-            }
 
-            //TODO: Change car status to BUSY at order
+                /*var carResult = carDB.Cars.SingleOrDefault(x => x.RegistrationNumber == result.CarId);
+
+                if (carResult != null)
+                {
+                    carResult.Status = "BUSY"
+                    carDB.SaveChanges();
+                }
+                */
+            }
 
             return RedirectToAction("Order");
         }
@@ -117,16 +142,53 @@ namespace MoveURPack.Controllers
             {
                 result.Status = "NEW";
                 orderDB.SaveChanges();
-            }
 
-            //TODO: Change car status to FREE at order
+                /*var carResult = carDB.Cars.SingleOrDefault(x => x.RegistrationNumber == result.CarId);
+
+                if (carResult != null)
+                {
+                    carResult.Status = "FREE"
+                    carDB.SaveChanges();
+                }
+                */
+            }
 
             return RedirectToAction("Order");
         }
 
+        [HttpGet]
         public IActionResult RegisterCompany()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegisterCompany(CompanyRegisterViewModel company)
+        {
+            var uniqueResult = companyDB.Company.FirstOrDefault(x => x.EmailAddress == company.Email);
+
+            if (uniqueResult != null)
+            {
+                companyDB.Company.Add(new CompanyModel()
+                {
+                    CompanyName = company.Name,
+                    CompanyAddress = company.Address,
+                    EmailAddress = User.Identity.Name,
+                    TaxNumber = company.TaxNumber,
+                    CompanyRatingScore = 0,
+                    CompanyRatingAmount = 0
+                });
+
+                companyDB.SaveChanges();
+
+                return View("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Company with the same email already exists. Please change email of organization!");
+                return View();
+            }
+            
         }
 
         private void fillData()
