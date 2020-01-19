@@ -25,6 +25,11 @@
                                 <div class="media-body">
                                     <h5 class="mt-0 mb-1">ORDER @order.OrderID</h5>
                                     @order.Status
+                                    @if (order.Status == "IN PROGRESS")
+                                    {
+                                        <a class="btn btn-ouline-warning" 
+                                           href="@Url.Action("ResolveAndRateOrder","User", new { orderID = order.OrderID })">Resolve</a>
+                                    }
                                 </div>
                             </div>
                         </li>

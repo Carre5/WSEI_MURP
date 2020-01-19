@@ -23,8 +23,8 @@ namespace WSEI_MURP.Models.DataModels
 
         public int UserRating { get; set; }
 
-        public long CarId { get; set; }
+        public string CarRegistrationNumber { get; set; }
         public double Price { get; set; }
-        public long UserId { get; set; }
+        public string UserEmail { get; set; }
     }
 }

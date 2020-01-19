@@ -34,12 +34,11 @@ namespace MoveURPack.Controllers
                 ViewBag.Company_Name = nameResult.CompanyName;
                 ViewBag.Company_Feadback_Total_Score = nameResult.CompanyRatingScore;
                 ViewBag.Company_Feedback_Amount = nameResult.CompanyRatingAmount;
+                ViewBag.Company_Feedback_Average = (nameResult.CompanyRatingScore / nameResult.CompanyRatingAmount);
             }
             else
             {
-                ViewBag.Company_Name = User.Identity.Name;
-                ViewBag.Company_Feadback_Total_Score = -1;
-                ViewBag.Company_Feedback_Amount = -1;
+                return RedirectToAction("Index", "User");
             }
 
             ViewBag.Orders = orderDB.Orders
@@ -85,10 +84,13 @@ namespace MoveURPack.Controllers
         [HttpGet]
         public IActionResult CreateOrder()
         {
-            //add registration number to car data model
-            ViewBag.Cars = carDB.Cars
-                .Where(x => x.CompanyEmail == User.Identity.Name)
-                .ToArray();
+            CarModel[] cars = carDB.Cars.Where(x => x.CompanyEmail == User.Identity.Name && x.Status == "FREE").ToArray();
+
+            //no cars == no orders, no available cars == no orders
+            if (cars.Length < 1)
+                return RedirectToAction("Index");
+
+            ViewBag.Cars = cars;
             return View();
         }
 
@@ -102,7 +104,16 @@ namespace MoveURPack.Controllers
             int orderAmount = orderDB.Orders.Where(x => x.CompanyEmail == User.Identity.Name).ToArray().Length;
             orderAmount++;
 
-            order.OrderID = DateTime.Now.ToString("yyyymmdd") + orderAmount.ToString();
+            var nameResult = FindMatchingCompany(User.Identity.Name);
+
+            if (nameResult != null)
+            {
+                order.OrderID = DateTime.Now.ToString("yyyymmdd") + nameResult.CompanyName + orderAmount.ToString();
+            }
+
+            var carEdit = carDB.Cars.FirstOrDefault(car => car.RegistrationNumber == order.CarRegistrationNumber).Status == "BUSY";
+            carDB.SaveChanges();
+            
             order.UserRating = 0;
 
             orderDB.Orders.Add(order);
@@ -189,6 +200,15 @@ namespace MoveURPack.Controllers
                 return View();
             }
             
+        }
+
+        private CompanyModel FindMatchingCompany(string companyAddress)
+        {
+            var result = companyDB.Company.FirstOrDefault(x => x.EmailAddress == companyAddress);
+            if (result != null)
+                return result;
+            else
+                return null;
         }
 
         private void fillData()

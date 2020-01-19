@@ -15,7 +15,7 @@
             <h3>Statistics</h3>
             <p>Feedback Total Score: @ViewBag.Company_Feadback_Total_Score</p>
             <p>Feedback Amount: @ViewBag.Company_Feedback_Amount</p>
-            <p>Average Rating: @ViewBag.Company_Feadback_Total_Score/ViewBag.Company_Feedback_Amount</p>
+            <p>Average Rating: @ViewBag.Company_Feedback_Average</p>
         </div>
     }
     <div class="row">
@@ -43,6 +43,11 @@
                                 <div class="media-body">
                                     <h5 class="mt-0 mb-1">ORDER @order.OrderID</h5>
                                     @order.Status
+                                    @if (order.Status == "IN PROGRESS")
+                                    {
+                                        <a class="btn btn-ouline-warning"
+                                           href="@Url.Action("ResolveAndRateOrder","User", new { orderID = order.OrderID })">Resolve</a>
+                                    }
                                 </div>
                             </div>
                         </li>

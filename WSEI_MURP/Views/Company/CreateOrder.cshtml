@@ -8,14 +8,11 @@
 <form asp-action="CreateOrder">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="CarId" class="control-label"></label>
-        <select asp-for="CarId" class="form-control">
-            @foreach (var car in ViewBag.Cars)
-            {
-                <option value="@car.RegistrationNumber">@car.Brand @car.Model @car.RegistrationNumber</option>
-            }
+        <label asp-for="CarRegistrationNumber" class="control-label"></label>
+        <select asp-for="CarRegistrationNumber"
+                asp-items="@(new SelectList(ViewBag.Cars,"RegistrationNumber","RegistrationNumber"))" class="form-control">
         </select>
-        <span asp-validation-for="CarId" class="text-danger"></span>
+        <span asp-validation-for="CarRegistrationNumber" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Localization" class="control-label"></label>

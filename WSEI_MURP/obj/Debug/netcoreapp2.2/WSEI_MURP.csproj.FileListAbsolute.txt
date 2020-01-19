@@ -41,3 +41,5 @@ C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\WSEI_MU
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Home\Order.cshtml.g.cs
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\Company\RegisterCompany.cshtml.g.cs
 C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\User\OrderSummary.cshtml.g.cs
+C:\Users\mpyjos\source\repos\WSEI_MURP\WSEI_MURP\obj\Debug\netcoreapp2.2\Razor\Views\User\ResolveAndRateOrder.cshtml.g.cs
