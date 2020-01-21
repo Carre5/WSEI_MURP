@@ -33,10 +33,7 @@ namespace WSEI_MURP.Controllers
                 return RedirectToAction("Index", "Company");
             else
             {
-                List<OrderModel> order_History = new List<OrderModel>();
-
-                //List<OrderModel> userOrders = orderDB.Orders.Where(x => x.UserId == User.Identity.Name).ToArray();
-                //return View(userOrders);
+                var order_History = orderDB.Orders.Where(x => x.UserEmail == User.Identity.Name);
 
                 ViewBag.UserName = User.Identity.Name;
                 ViewBag.Order_History = order_History;
