@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Order Summary";
+}
+
+<h1>Review Order and your Details</h1>
+
+<div>
+    @ViewBag.Order
+</div>
+
+<div>
+    @ViewBag.User
+</div>
+
+<a href="@Url.Action("SaveOrder","User",new { orderId = ViewBag.Order.OrderID })">Data Good? Save Order!</a>
+<a href="@Url.Action("Index")">Data Not Good? Come back!</a>

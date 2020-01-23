@@ -15,10 +15,12 @@ namespace WSEI_MURP.Controllers
     {
 
         private readonly OrderDataContext orderDB;
+        private readonly CarDataContext carDB;
 
-        public HomeController(OrderDataContext orderDB)
+        public HomeController(OrderDataContext orderDB, CarDataContext carDB)
         {
             this.orderDB = orderDB;
+            this.carDB = carDB;
         }
 
         public IActionResult Index()
@@ -40,8 +42,10 @@ namespace WSEI_MURP.Controllers
             var result = orderDB.Orders.SingleOrDefault(x => x.OrderID == id);
             if (result != null)
             {
+                ViewBag.CarOrder = carDB.Cars.FirstOrDefault(c => c.RegistrationNumber == result.CarRegistrationNumber);
                 ViewBag.Order = result;
             }
+
             return View();
         }
 

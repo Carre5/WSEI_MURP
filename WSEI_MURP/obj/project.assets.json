@@ -13023,23 +13023,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mpyjos\\.nuget\\packages\\": {},
+    "C:\\Users\\Konrad\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mpyjos\\source\\repos\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
+      "projectUniqueName": "C:\\Users\\Konrad\\Desktop\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
       "projectName": "WSEI_MURP",
-      "projectPath": "C:\\Users\\mpyjos\\source\\repos\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
-      "packagesPath": "C:\\Users\\mpyjos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mpyjos\\source\\repos\\WSEI_MURP\\WSEI_MURP\\obj\\",
+      "projectPath": "C:\\Users\\Konrad\\Desktop\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
+      "packagesPath": "C:\\Users\\Konrad\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Konrad\\Desktop\\WSEI_MURP\\WSEI_MURP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mpyjos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Konrad\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

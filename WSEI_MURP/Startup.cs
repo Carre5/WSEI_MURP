@@ -50,6 +50,11 @@ namespace WSEI_MURP
                 var connectionString = Configuration.GetConnectionString("OrderDataContext");
                 options.UseSqlServer(connectionString);
             });
+            services.AddDbContext<CompanyDataContext>(options =>
+            {
+                var connectionString = Configuration.GetConnectionString("CompanyDataContext");
+                options.UseSqlServer(connectionString);
+            });
             #endregion
 
             services.AddIdentity<IdentityUser, IdentityRole>()

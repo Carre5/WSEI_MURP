@@ -21,8 +21,10 @@ namespace WSEI_MURP.Models.DataModels
         public string Status { get; set; }
         public bool DriverRequired { get; set; }
 
-        public long CarId { get; set; }
+        public int UserRating { get; set; }
+
+        public string CarRegistrationNumber { get; set; }
         public double Price { get; set; }
-        public long UserId { get; set; }
+        public string UserEmail { get; set; }
     }
 }

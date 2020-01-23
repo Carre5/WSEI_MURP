@@ -3,20 +3,24 @@
     ViewData["Title"] = "Single Order Page";
 }
 
-
-
-
     <div class="card">
         <h5 class="card-header">Order: @ViewBag.Order.OrderID</h5>
         <div class="card-body">
             <h5 class="card-title"></h5>
             <h6 class="card-subtitle mb-2 text-muted">@ViewBag.Order.Localization</h6>
-            <h6 class="card-subtitle mb-2 text-muted">CarID: @ViewBag.Order.CarId</h6>
             <h6 class="card-subtitle mb-2 text-muted">Status: @ViewBag.Order.Status</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Car: @ViewBag.Order.CarRegistrationNumber</h6>
             <h6 class="card-subtitle mb-2 text-muted">Price: @ViewBag.Order.Price$</h6>
+
             <p class="card-text">
-                TODO: Show single order with all available content for anonymous user and create buttons and actions to reserve order to user after sending email address etc.
+                @ViewBag.Order.Description
             </p>
-            <a href="#" class="btn btn-primary">Choose Me!</a>
+            <p class="card-text">
+                @ViewBag.CarOrder.Brand
+                @ViewBag.CarOrder.Model
+                @ViewBag.CarOrder.RegistrationNumber
+            </p>
+
+            <a href="@Url.Action("OrderSummary","User", new { orderId = ViewBag.Order.OrderID })" class="btn btn-primary">Choose Me!</a>
         </div>
     </div>
