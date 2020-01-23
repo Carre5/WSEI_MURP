@@ -20,5 +20,7 @@ namespace WSEI_MURP.Models.DataModels
         public string Category { get; set; }
         public string CompanyEmail { get; set; }
         public string Status { get; set; }
+
+        public string ShortDescription { get; set; }
     }
 }

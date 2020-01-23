@@ -4,31 +4,47 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WSEI_MURP.Controllers;
+using WSEI_MURP.Models.Account;
 using WSEI_MURP.Models.DataContext;
 using WSEI_MURP.Models.DataModels;
+using WSEI_MURP.Models.ViewModels;
 
 namespace MoveURPack.Controllers
 {
     [Authorize]
     public class CompanyController : Controller
     {
-        //private readonly CompanyDataContext db;
         private readonly OrderDataContext orderDB;
         private readonly CarDataContext carDB;
-        public CompanyController(CarDataContext carDB, OrderDataContext orderDB)
+        private readonly CompanyDataContext companyDB;
+        public CompanyController(CarDataContext carDB, OrderDataContext orderDB, CompanyDataContext companyDB)
         {
-            //this.db = db;
             this.orderDB = orderDB;
             this.carDB = carDB;
-
-            fillData();
+            this.companyDB = companyDB;
         }
 
         public IActionResult Index()
         {
+            var nameResult = companyDB.Company.FirstOrDefault(x => x.EmailAddress == User.Identity.Name);
+
+            if (nameResult != null)
+            {
+                ViewBag.Company_Name = nameResult.CompanyName;
+                ViewBag.Company_Feadback_Total_Score = nameResult.CompanyRatingScore;
+                ViewBag.Company_Feedback_Amount = nameResult.CompanyRatingAmount;
+                ViewBag.Company_Feedback_Average = (nameResult.CompanyRatingScore / nameResult.CompanyRatingAmount);
+            }
+            else
+            {
+                return RedirectToAction("Index", "User");
+            }
+
             ViewBag.Orders = orderDB.Orders
                 .Where(x => x.CompanyEmail == User.Identity.Name)
                 .ToArray();
+
             return View();
         }
 
@@ -68,10 +84,13 @@ namespace MoveURPack.Controllers
         [HttpGet]
         public IActionResult CreateOrder()
         {
-            //add registration number to car data model
-            ViewBag.Cars = carDB.Cars
-                .Where(x => x.CompanyEmail == User.Identity.Name)
-                .ToArray();
+            CarModel[] cars = carDB.Cars.Where(x => x.CompanyEmail == User.Identity.Name && x.Status == "FREE").ToArray();
+
+            //no cars == no orders, no available cars == no orders
+            if (cars.Length < 1)
+                return RedirectToAction("Index");
+
+            ViewBag.Cars = cars;
             return View();
         }
 
@@ -85,7 +104,17 @@ namespace MoveURPack.Controllers
             int orderAmount = orderDB.Orders.Where(x => x.CompanyEmail == User.Identity.Name).ToArray().Length;
             orderAmount++;
 
-            order.OrderID = DateTime.Now.ToString("yyyymmdd") + orderAmount.ToString();
+            var nameResult = FindMatchingCompany(User.Identity.Name);
+
+            if (nameResult != null)
+            {
+                order.OrderID = DateTime.Now.ToString("yyyymmdd") + nameResult.CompanyName + orderAmount.ToString();
+            }
+
+            var carEdit = carDB.Cars.FirstOrDefault(car => car.RegistrationNumber == order.CarRegistrationNumber).Status == "BUSY";
+            carDB.SaveChanges();
+            
+            order.UserRating = 0;
 
             orderDB.Orders.Add(order);
             orderDB.SaveChanges();
@@ -101,9 +130,16 @@ namespace MoveURPack.Controllers
             {
                 result.Status = "READY";
                 orderDB.SaveChanges();
-            }
 
-            //TODO: Change car status to BUSY at order
+                /*var carResult = carDB.Cars.SingleOrDefault(x => x.RegistrationNumber == result.CarId);
+
+                if (carResult != null)
+                {
+                    carResult.Status = "BUSY"
+                    carDB.SaveChanges();
+                }
+                */
+            }
 
             return RedirectToAction("Order");
         }
@@ -117,16 +153,62 @@ namespace MoveURPack.Controllers
             {
                 result.Status = "NEW";
                 orderDB.SaveChanges();
-            }
 
-            //TODO: Change car status to FREE at order
+                /*var carResult = carDB.Cars.SingleOrDefault(x => x.RegistrationNumber == result.CarId);
+
+                if (carResult != null)
+                {
+                    carResult.Status = "FREE"
+                    carDB.SaveChanges();
+                }
+                */
+            }
 
             return RedirectToAction("Order");
         }
 
+        [HttpGet]
         public IActionResult RegisterCompany()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult RegisterCompany(CompanyRegisterViewModel company)
+        {
+            var uniqueResult = companyDB.Company.FirstOrDefault(x => x.EmailAddress == company.Email);
+
+            if (uniqueResult != null)
+            {
+                companyDB.Company.Add(new CompanyModel()
+                {
+                    CompanyName = company.Name,
+                    CompanyAddress = company.Address,
+                    EmailAddress = User.Identity.Name,
+                    TaxNumber = company.TaxNumber,
+                    CompanyRatingScore = 0,
+                    CompanyRatingAmount = 0
+                });
+
+                companyDB.SaveChanges();
+
+                return View("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Company with the same email already exists. Please change email of organization!");
+                return View();
+            }
+            
+        }
+
+        private CompanyModel FindMatchingCompany(string companyAddress)
+        {
+            var result = companyDB.Company.FirstOrDefault(x => x.EmailAddress == companyAddress);
+            if (result != null)
+                return result;
+            else
+                return null;
         }
 
         private void fillData()
