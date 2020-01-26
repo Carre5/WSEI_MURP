@@ -11,12 +11,14 @@ namespace MURP_Lib.Logic
 
         public static void CreateOrder(string companyEmail, string carRegistrationNumber)
         {
-            if (!Validators.EmailValid(companyEmail))
+            Validators v = new Validators();
+
+            if (!v.EmailValid(companyEmail))
             {
                 throw new FormatException();
             }
 
-            if (!Validators.CarRegistrationNumberValid(companyEmail))
+            if (!v.CarRegistrationNumberValid(companyEmail))
             {
                 throw new FormatException();
             }

@@ -8,3 +8,8 @@ D:\Studia\Semestr V\WSEI_T_Imperium\Time_and_TimePeriod\bin\Debug\Time_and_TimeP
 D:\Studia\Semestr V\WSEI_T_Imperium\Time_and_TimePeriod\obj\Debug\Time_and_TimePeriod.csprojAssemblyReference.cache
 D:\Studia\Semestr V\WSEI_T_Imperium\Time_and_TimePeriod\obj\Debug\Time_and_TimePeriod.dll
 D:\Studia\Semestr V\WSEI_T_Imperium\Time_and_TimePeriod\obj\Debug\Time_and_TimePeriod.pdb
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_and_TimePeriod\bin\Debug\Time_and_TimePeriod.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_and_TimePeriod\bin\Debug\Time_and_TimePeriod.pdb
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_and_TimePeriod\obj\Debug\Time_and_TimePeriod.csprojAssemblyReference.cache
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_and_TimePeriod\obj\Debug\Time_and_TimePeriod.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_and_TimePeriod\obj\Debug\Time_and_TimePeriod.pdb

@@ -4,14 +4,14 @@ using System.Text;
 
 namespace MURP_Lib.Logic
 {
-    public static class Validators
+    public class Validators
     {
-        public static bool EmailValid(string email)
+        public bool EmailValid(string email)
         {
             bool result = false;
-            if (email == "")
+            if (string.IsNullOrEmpty(email))
             {
-                throw new ArgumentException();
+                throw new ArgumentNullException();
             }
 
             if (email != null && email.Contains("@"))
@@ -22,7 +22,7 @@ namespace MURP_Lib.Logic
             return result;
         }
 
-        public static bool CarRegistrationNumberValid(string registrationNumber)
+        public bool CarRegistrationNumberValid(string registrationNumber)
         {
             bool result = false;
             if (registrationNumber == "")
@@ -30,10 +30,9 @@ namespace MURP_Lib.Logic
                 throw new ArgumentException();
             }
 
-            if (registrationNumber.Contains(" "))
+            if (registrationNumber.Contains("KR"))
             {
-                string[] temp = registrationNumber.Split(" ");
-                result = temp[0].Length == 3 ? true : false;
+                result = true;
             }
 
             return result;

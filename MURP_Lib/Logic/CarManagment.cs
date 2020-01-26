@@ -12,16 +12,36 @@ namespace MURP_Lib.Logic
 
         public static void CreateCar(string brand, string model, string registrationNumber)
         {
-            if (Validators.CarRegistrationNumberValid(registrationNumber))
+            if (string.IsNullOrEmpty(brand) || string.IsNullOrEmpty(model) || string.IsNullOrEmpty(registrationNumber))
             {
-                Car newcar = new Car()
-                {
-                    Brand = brand,
-                    Model = model,
-                    Registration_Number = registrationNumber
-                };
+                throw new ArgumentNullException();
+            }
 
+            Validators v = new Validators();
+
+            if (v.CarRegistrationNumberValid(registrationNumber))
+            {
+                Car newcar = new Car(brand, model, registrationNumber);
                 Cars.Add(newcar);
+            }
+            else
+            {
+                throw new FormatException();
+            }
+        }
+
+        public static void CreateCar(Car car)
+        {
+            if (string.IsNullOrEmpty(car.Brand) || string.IsNullOrEmpty(car.Model) || string.IsNullOrEmpty(car.Registration_Number))
+            {
+                throw new ArgumentNullException();
+            }
+
+            Validators v = new Validators();
+
+            if (v.CarRegistrationNumberValid(car.Registration_Number))
+            {
+                Cars.Add(car);
             }
             else
             {

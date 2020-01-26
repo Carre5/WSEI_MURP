@@ -13,5 +13,16 @@ namespace MURP_Lib.Models
         public string Tax_Identification_Number { get; set; }
         public int Company_Rating_Score { get; set; }
         public int Company_Rating_Amount { get; set; }
+
+        public Company(string Name, string OfficeAddress, string EmailAddress, string TaxIdentificationNumber)
+        {
+            this.Name = Name;
+            this.Office_Address = OfficeAddress;
+            this.Email_Address = EmailAddress;
+            this.Tax_Identification_Number = TaxIdentificationNumber;
+            Id = 0;
+            Company_Rating_Amount = 0;
+            Company_Rating_Score = 0;
+        }
     }
 }

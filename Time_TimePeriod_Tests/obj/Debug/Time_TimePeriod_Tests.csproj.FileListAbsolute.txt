@@ -64,3 +64,9 @@ C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\obj\Debug\Time_Time
 C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\obj\Debug\Time_TimePeriod_Tests.csproj.CopyComplete
 C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\obj\Debug\Time_TimePeriod_Tests.dll
 C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\obj\Debug\Time_TimePeriod_Tests.pdb
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\mpyjos\source\repos\WSEI_MURP\Time_TimePeriod_Tests\bin\Debug\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
