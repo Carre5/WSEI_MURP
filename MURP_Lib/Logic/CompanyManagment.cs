@@ -15,11 +15,16 @@ namespace MURP_Lib.Logic
             return Companies.SingleOrDefault(c => c.Email_Address == email);
         }
 
-        public static void HandleRating(Company company, Order_Rating rating)
+        public static bool HandleRating(Company company, Order_Rating rating)
         {
-            Company tempComp = Companies.SingleOrDefault(c => c == company);
-            tempComp.Company_Rating_Amount++;
-            tempComp.Company_Rating_Score += int.Parse(rating.ToString());
+            Company tempComp = Companies.SingleOrDefault(c => c.Email_Address == company.Email_Address);
+            if (tempComp != null)
+            {
+                tempComp.Company_Rating_Amount++;
+                tempComp.Company_Rating_Score += 2;
+                return true;
+            }
+            return false;
         }
     }
 }
