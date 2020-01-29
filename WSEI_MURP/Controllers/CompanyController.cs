@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WSEI_MURP.Controllers;
 using WSEI_MURP.Models.Account;
 using WSEI_MURP.Models.DataContext;
@@ -41,6 +42,8 @@ namespace MoveURPack.Controllers
                 return RedirectToAction("Index", "User");
             }
 
+            ViewBag.AjaxEndpoint = "https://" + Request.Host.ToString();
+
             ViewBag.Orders = orderDB.Orders
                 .Where(x => x.CompanyEmail == User.Identity.Name)
                 .ToArray();
@@ -54,6 +57,12 @@ namespace MoveURPack.Controllers
                 .Where(x => x.CompanyEmail == User.Identity.Name)
                 .ToArray();
             return View();
+        }
+
+        public string AjaxOrders()
+        {
+            List<OrderModel> aList = orderDB.Orders.Where(x => x.CompanyEmail == User.Identity.Name).ToList();
+            return JsonConvert.SerializeObject(aList);
         }
 
         public IActionResult Cars()

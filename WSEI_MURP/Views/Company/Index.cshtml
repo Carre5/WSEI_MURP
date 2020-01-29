@@ -34,25 +34,63 @@
         <div class="col-9">
             @if (ViewBag.Orders != null && ViewBag.Orders.Length > 0)
             {
-                <ul class="list-group">
-                    @foreach (OrderModel order in ViewBag.Orders)
-                    {
-                        <li class="list-group-item">
-                            <div class="media">
-                                <img src="..." class="mr-3" alt="...">
-                                <div class="media-body">
-                                    <h5 class="mt-0 mb-1">ORDER @order.OrderID</h5>
-                                    @order.Status
-                                    @if (order.Status == "IN PROGRESS")
-                                    {
-                                        <a class="btn btn-ouline-warning"
-                                           href="@Url.Action("ResolveAndRateOrder","User", new { orderID = order.OrderID })">Resolve</a>
-                                    }
-                                </div>
-                            </div>
-                        </li>
+                <img id="searchOrders" src="~/img/search.png" />
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+                <script>
+                    $(() => {
+                        $("#searchOrders").click(() => {
+                            SearchOrders();
+                        })
+                        SearchOrders();
+                    })
+
+                    function SearchOrders() {
+                        $.get("@ViewBag.AjaxEndpoint/Company/AjaxOrders", function (data) {
+                            var orders = JSON.parse(data);
+                            console.log(orders);
+                            var parent = document.querySelector("#ajax");
+                            parent.innerHTML = "";
+
+                            orders.forEach((el)=>{
+                                var listItem = document.createElement("li");
+                                listItem.className = "list-group-item";
+
+                                var mediaItem = document.createElement("div");
+                                mediaItem.className = "media";
+
+                                var img = document.createElement("img");
+                                img.src = "/img/search.png";
+                                img.alt = "icon";
+                                img.className = "mr-3";
+
+                                var mediaBody = document.createElement("div");
+                                mediaBody.className = "media-body";
+            
+                                var h5 = document.createElement("h5");
+                                h5.className = "mt-0 mb-1";
+                                h5.textContent = "ORDER " + el.OrderID;
+
+                                mediaBody.appendChild(h5);
+
+                                mediaBody.innerHTML += el.Status + "<br/>";
+
+                                if (el.Status == "IN PROGRESS") {
+                                    var btn = document.createElement("a");
+                                    btn.className = "btn btn-outline-warning";
+                                    btn.href = "@ViewBag.AjaxEndpoint/User/ResolveAndRateOrder?orderID=" + el.OrderID;
+                                    btn.textContent = "Resolve";
+                                    mediaBody.appendChild(btn);
+                                }
+
+                                mediaItem.appendChild(img);
+                                mediaItem.appendChild(mediaBody);
+                                listItem.appendChild(mediaItem);
+                                parent.appendChild(listItem);
+                            })
+                        });
                     }
-                </ul>
+                </script>
+                <ul id="ajax" class="list-group"></ul>
             }
         </div>
     </div>

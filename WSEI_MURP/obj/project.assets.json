@@ -13029,11 +13029,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mpyjos\\source\\repos\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
+      "projectUniqueName": "C:\\Users\\mpyjos\\Desktop\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
       "projectName": "WSEI_MURP",
-      "projectPath": "C:\\Users\\mpyjos\\source\\repos\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
+      "projectPath": "C:\\Users\\mpyjos\\Desktop\\WSEI_MURP\\WSEI_MURP\\WSEI_MURP.csproj",
       "packagesPath": "C:\\Users\\mpyjos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mpyjos\\source\\repos\\WSEI_MURP\\WSEI_MURP\\obj\\",
+      "outputPath": "C:\\Users\\mpyjos\\Desktop\\WSEI_MURP\\WSEI_MURP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
