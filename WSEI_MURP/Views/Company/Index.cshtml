@@ -74,6 +74,12 @@
 
                                 mediaBody.innerHTML += el.Status + "<br/>";
 
+                                var companyRating = document.createElement("span");
+                                companyRating.className = "badge badge-pill badge-dark";
+                                companyRating.textContent = "Company Rating: " + el.CompanyRating;
+
+                                mediaBody.appendChild(companyRating);
+
                                 if (el.Status == "IN PROGRESS") {
                                     var btn = document.createElement("a");
                                     btn.className = "btn btn-outline-warning";

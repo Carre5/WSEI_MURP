@@ -77,7 +77,7 @@ namespace WSEI_MURP.Controllers
             var company = companyDB.Company.SingleOrDefault(x => x.EmailAddress == order.CompanyEmail);
 
             order.Status = "RESOLVED";
-            order.UserRating = orderRating.Rating;
+            order.UserRating = orderRating.OrderRating;
 
             var car = carDB.Cars.SingleOrDefault(x => x.RegistrationNumber == order.CarRegistrationNumber);
             car.Status = "FREE";

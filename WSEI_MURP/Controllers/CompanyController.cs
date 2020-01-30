@@ -62,7 +62,26 @@ namespace MoveURPack.Controllers
         public string AjaxOrders()
         {
             List<OrderModel> aList = orderDB.Orders.Where(x => x.CompanyEmail == User.Identity.Name).ToList();
-            return JsonConvert.SerializeObject(aList);
+
+            List<RateOrderViewModel> OrdersWithRating = new List<RateOrderViewModel>();
+
+            foreach (OrderModel order in aList)
+            {
+                var result = FindMatchingCompany(order.CompanyEmail);
+                if (result != null)
+                {
+                    double rating = result.CompanyRatingScore / result.CompanyRatingAmount;
+                    OrdersWithRating.Add(new RateOrderViewModel()
+                    {
+                        OrderID = order.OrderID,
+                        CompanyEmail = order.CompanyEmail,
+                        Status = order.Status,
+                        CompanyRating = rating
+                    });
+                }
+            }
+
+            return JsonConvert.SerializeObject(OrdersWithRating.OrderByDescending(order => order.CompanyRating));
         }
 
         public IActionResult Cars()
