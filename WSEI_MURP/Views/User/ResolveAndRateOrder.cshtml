@@ -1,26 +1,26 @@
-﻿@model WSEI_MURP.Models.ViewModels.RateOrderViewModel
+﻿@model WSEI_MURP.Models.ViewModels.OrderRating_ViewModel
 @{
     ViewData["Title"] = "Resolve Order";
 }
 
 <h1>Resolve Order</h1>
 
-<form asp-action="RateOrder">
+<form asp-action="RateOrder" method="post">
 
     <div class="form-group" style="display:none">
         <label asp-for="OrderID" class="control-label"></label>
-        <input asp-for="OrderID" value="@ViewBag.Order.OrderID" />
+        <input asp-for="OrderID" value="@ViewBag.Order" />
         <span asp-validation-for="OrderID" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="OrderRating" class="control-label"></label>
-        <select asp-for="OrderRating"
+        <label asp-for="Rating" class="control-label"></label>
+        <select asp-for="Rating"
                 asp-items="@(new SelectList(ViewBag.Ratings))" class="form-control">
         </select>
-        <span asp-validation-for="OrderRating" class="text-danger"></span>
+        <span asp-validation-for="Rating" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+        <input type="submit" value="Rate" class="btn btn-primary" />
     </div>
 </form>

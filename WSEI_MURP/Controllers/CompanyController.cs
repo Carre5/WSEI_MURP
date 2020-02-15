@@ -35,7 +35,14 @@ namespace MoveURPack.Controllers
                 ViewBag.Company_Name = nameResult.CompanyName;
                 ViewBag.Company_Feadback_Total_Score = nameResult.CompanyRatingScore;
                 ViewBag.Company_Feedback_Amount = nameResult.CompanyRatingAmount;
-                ViewBag.Company_Feedback_Average = (nameResult.CompanyRatingScore / nameResult.CompanyRatingAmount);
+                if (nameResult.CompanyRatingAmount > 0)
+                {
+                    ViewBag.Company_Feedback_Average = (double) nameResult.CompanyRatingScore / (double) nameResult.CompanyRatingAmount;
+                }
+                else
+                {
+                    ViewBag.Company_Feedback_Average = 0;
+                }
             }
             else
             {
@@ -70,7 +77,16 @@ namespace MoveURPack.Controllers
                 var result = FindMatchingCompany(order.CompanyEmail);
                 if (result != null)
                 {
-                    double rating = result.CompanyRatingScore / result.CompanyRatingAmount;
+                    double rating;
+                    if(result.CompanyRatingAmount > 0)
+                    {
+                        rating = (double) result.CompanyRatingScore / (double) result.CompanyRatingAmount;
+                    }
+                    else
+                    {
+                        rating = 0;
+                    }
+                    
                     OrdersWithRating.Add(new RateOrderViewModel()
                     {
                         OrderID = order.OrderID,
@@ -204,9 +220,9 @@ namespace MoveURPack.Controllers
         [HttpPost]
         public IActionResult RegisterCompany(CompanyRegisterViewModel company)
         {
-            var uniqueResult = companyDB.Company.FirstOrDefault(x => x.EmailAddress == company.Email);
+            var uniqueResult = companyDB.Company.FirstOrDefault(x => x.EmailAddress == User.Identity.Name);
 
-            if (uniqueResult != null)
+            if (uniqueResult == null)
             {
                 companyDB.Company.Add(new CompanyModel()
                 {

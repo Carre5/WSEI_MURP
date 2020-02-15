@@ -9,15 +9,6 @@
 </div>
 
 <div class="container">
-    @if (ViewBag.Company_Feadback_Total_Score > 0 && ViewBag.Company_Feedback_Amount > 0)
-    {
-        <div class="row">
-            <h3>Statistics</h3>
-            <p>Feedback Total Score: @ViewBag.Company_Feadback_Total_Score</p>
-            <p>Feedback Amount: @ViewBag.Company_Feedback_Amount</p>
-            <p>Average Rating: @ViewBag.Company_Feedback_Average</p>
-        </div>
-    }
     <div class="row">
         <div class="col-3">
             <div class="list-group">
@@ -30,7 +21,29 @@
                    asp-controller="Company"
                    asp-action="Order"> Orders</a>
             </div>
-        </div>
+            @if (ViewBag.Company_Feadback_Total_Score > 0 && ViewBag.Company_Feedback_Amount > 0)
+            {
+                <h3>Statistics</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Feedback Total Score:
+                        <span class="badge badge-light badge-pill">@ViewBag.Company_Feadback_Total_Score</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Feedback Amount:
+                        <span class="badge badge-light badge-pill">@ViewBag.Company_Feedback_Amount</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Average Rating:
+                        <span class="badge badge-light badge-pill">@ViewBag.Company_Feedback_Average</span>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <h5>No Statistics yet</h5>
+            }
+            </div>
         <div class="col-9">
             @if (ViewBag.Orders != null && ViewBag.Orders.Length > 0)
             {

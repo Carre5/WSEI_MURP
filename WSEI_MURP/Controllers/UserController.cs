@@ -33,10 +33,10 @@ namespace WSEI_MURP.Controllers
                 return RedirectToAction("Index", "Company");
             else
             {
-                var order_History = orderDB.Orders.Where(x => x.UserEmail == User.Identity.Name);
+                var order_History = orderDB.Orders.Where(x => x.UserEmail == User.Identity.Name).ToList();
 
                 ViewBag.UserName = User.Identity.Name;
-                ViewBag.Order_History = order_History;
+                ViewBag.OrderHistory = order_History;
 
                 return View();
             }
@@ -63,7 +63,7 @@ namespace WSEI_MURP.Controllers
 
         public IActionResult ResolveAndRateOrder(string orderId)
         {
-            var order = orderDB.Orders.SingleOrDefault(x => x.OrderID == orderId);
+            var order = orderDB.Orders.SingleOrDefault(x => x.OrderID == orderId).OrderID;
 
             ViewBag.Order = order;
             ViewBag.Ratings = new List<int>() { 1, 2, 3, 4, 5 };
@@ -71,15 +71,16 @@ namespace WSEI_MURP.Controllers
             return View();
         }
 
-        public IActionResult RateOrder(RateOrderViewModel orderRating)
+        [HttpPost]
+        public IActionResult RateOrder(OrderRating_ViewModel orderRating)
         {
             var order = orderDB.Orders.SingleOrDefault(x => x.OrderID == orderRating.OrderID);
             var company = companyDB.Company.SingleOrDefault(x => x.EmailAddress == order.CompanyEmail);
 
             order.Status = "RESOLVED";
-            order.UserRating = orderRating.OrderRating;
+            order.UserRating = orderRating.Rating;
 
-            var car = carDB.Cars.SingleOrDefault(x => x.RegistrationNumber == order.CarRegistrationNumber);
+            var car = carDB.Cars.FirstOrDefault(x => x.RegistrationNumber == order.CarRegistrationNumber);
             car.Status = "FREE";
 
             company.CompanyRatingScore += order.UserRating;
