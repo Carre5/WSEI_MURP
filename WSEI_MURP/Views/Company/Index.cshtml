@@ -1,0 +1,116 @@
+﻿@using WSEI_MURP.Models.DataModels
+@{
+    ViewData["Title"] = "Company Dashboard";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Company Dashboard</h1>
+    <h4>Hello, @ViewBag.Company_Name !</h4>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action"
+                   asp-area=""
+                   asp-controller="Company"
+                   asp-action="Cars"> Cars</a>
+                <a class="list-group-item list-group-item-action"
+                   asp-area=""
+                   asp-controller="Company"
+                   asp-action="Order"> Orders</a>
+            </div>
+            @if (ViewBag.Company_Feadback_Total_Score > 0 && ViewBag.Company_Feedback_Amount > 0)
+            {
+                <h3>Statistics</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Feedback Total Score:
+                        <span class="badge badge-light badge-pill">@ViewBag.Company_Feadback_Total_Score</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Feedback Amount:
+                        <span class="badge badge-light badge-pill">@ViewBag.Company_Feedback_Amount</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Average Rating:
+                        <span class="badge badge-light badge-pill">@ViewBag.Company_Feedback_Average</span>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <h5>No Statistics yet</h5>
+            }
+            </div>
+        <div class="col-9">
+            @if (ViewBag.Orders != null && ViewBag.Orders.Length > 0)
+            {
+                <img id="searchOrders" src="~/img/search.png" />
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+                <script>
+                    $(() => {
+                        $("#searchOrders").click(() => {
+                            SearchOrders();
+                        })
+                        SearchOrders();
+                    })
+
+                    function SearchOrders() {
+                        $.get("@ViewBag.AjaxEndpoint/Company/AjaxOrders", function (data) {
+                            var orders = JSON.parse(data);
+                            console.log(orders);
+                            var parent = document.querySelector("#ajax");
+                            parent.innerHTML = "";
+
+                            orders.forEach((el)=>{
+                                var listItem = document.createElement("li");
+                                listItem.className = "list-group-item";
+
+                                var mediaItem = document.createElement("div");
+                                mediaItem.className = "media";
+
+                                var img = document.createElement("img");
+                                img.src = "/img/search.png";
+                                img.alt = "icon";
+                                img.className = "mr-3";
+
+                                var mediaBody = document.createElement("div");
+                                mediaBody.className = "media-body";
+            
+                                var h5 = document.createElement("h5");
+                                h5.className = "mt-0 mb-1";
+                                h5.textContent = "ORDER " + el.OrderID;
+
+                                mediaBody.appendChild(h5);
+
+                                mediaBody.innerHTML += el.Status + "<br/>";
+
+                                var companyRating = document.createElement("span");
+                                companyRating.className = "badge badge-pill badge-dark";
+                                companyRating.textContent = "Company Rating: " + el.CompanyRating;
+
+                                mediaBody.appendChild(companyRating);
+
+                                if (el.Status == "IN PROGRESS") {
+                                    var btn = document.createElement("a");
+                                    btn.className = "btn btn-outline-warning";
+                                    btn.href = "@ViewBag.AjaxEndpoint/User/ResolveAndRateOrder?orderID=" + el.OrderID;
+                                    btn.textContent = "Resolve";
+                                    mediaBody.appendChild(btn);
+                                }
+
+                                mediaItem.appendChild(img);
+                                mediaItem.appendChild(mediaBody);
+                                listItem.appendChild(mediaItem);
+                                parent.appendChild(listItem);
+                            })
+                        });
+                    }
+                </script>
+                <ul id="ajax" class="list-group"></ul>
+            }
+        </div>
+    </div>
+</div>
