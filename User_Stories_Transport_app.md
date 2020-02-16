@@ -10,12 +10,12 @@ USER STORIES:
     NOTES: none
     STATUS: TODO
     AC:
-      - [ ] Panel zakładania konta jest dostępny po max dwóch kliknięciach, z każdego miejsca w Portalu 
-      - [ ] Konto można połączyć z kontem Google lub Facebook
-      - [ ] Użytownik musi podać dwukrotnie jednakowe hasło, odpowiednio długie i skomplikowane
-      - [ ] Jeden adres email może być powiązany tylko z jednym kontem
-      - [ ] Użytkownik może określić profil swojego konta (zleceniodawca i/lub wynajmujący)
-      - [ ] Wynajmujący może dodać dane i opis swojej firmy
+- [ ] Panel zakładania konta jest dostępny po max dwóch kliknięciach, z każdego miejsca w Portalu 
+- [ ] Konto można połączyć z kontem Google lub Facebook
+- [ ] Użytownik musi podać dwukrotnie jednakowe hasło, odpowiednio długie i skomplikowane
+- [ ] Jeden adres email może być powiązany tylko z jednym kontem
+- [ ] Użytkownik może określić profil swojego konta (zleceniodawca i/lub wynajmujący)
+- [ ] Wynajmujący może dodać dane i opis swojej firmy
   Jako Niezalogowany Użytkownik, po wyborze oferty mogę założyć konto użytkownika:
     ID: US2
     PRIORITY: 6
