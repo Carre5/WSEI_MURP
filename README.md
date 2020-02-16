@@ -1,8 +1,8 @@
 # WSEI_MURP
 Move your pack
 
-* User stories ![US](/Documentation/User_Stories_Transport_app.yml)
-* UML ![UML](/Documentation/UML_class_chart)
+* User stories [US](/Documentation/User_Stories_Transport_app.yml)
+* UML [UML](/Documentation/UML_class_chart.vsdx)
 
 ## Konkurencja:
 ### 1.	Platformy ogłoszeń
