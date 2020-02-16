@@ -1,5 +1,9 @@
 # WSEI_MURP
 Move your pack
+
+* User stories ![US](/Documentation/User_Stories_Transport_app.yml)
+* UML ![UML](/Documentation/UML_class_chart)
+
 ## Konkurencja:
 ### 1.	Platformy ogłoszeń
   *	OLX (stan 08.12.2019) – 591 ogłoszeń
