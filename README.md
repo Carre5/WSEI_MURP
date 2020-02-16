@@ -1,6 +1,12 @@
 # WSEI_MURP
 Move your pack
 
+## Autorzy
+
+* Konrad Barnaś (konrad.barnas@microsoft.wsei.edu.pl)
+* Marcin Pyjos (marcin.pyjos@microsoft.wsei.edu.pl)
+* Paweł Drab (pawel.drab@microsoft.wsei.edu.pl)
+
 Dokumentacja techniczna
 * User stories [US](/Documentation/User_Stories_Transport_app.yml)
 * UML [UML](/Documentation/UML_class_chart.vsdx)
