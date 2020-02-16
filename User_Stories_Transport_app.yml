@@ -1,0 +1,468 @@
+NAME: Konto użytkownika
+ID: E1
+DESC: Zakładanie konta i logowanie
+NOTES: none
+STATUS: CONCIDER
+USER STORIES:
+  Jako Niezalogowany Użytkownik, mogę założyć kotno użytkownika:
+    ID: US1
+    PRIORITY: 1
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Panel zakładania konta jest dostępny po max dwóch kliknięciach, z każdego miejsca w Portalu 
+      2: Konto można połączyć z kontem Google lub Facebook
+      3: Użytownik musi podać dwukrotnie jednakowe hasło, odpowiednio długie i skomplikowane
+      4: Jeden adres email może być powiązany tylko z jednym kontem
+      5: Użytkownik może określić profil swojego konta (zleceniodawca i/lub wynajmujący)
+      6: Wynajmujący może dodać dane i opis swojej firmy
+  Jako Niezalogowany Użytkownik, po wyborze oferty mogę założyć konto użytkownika:
+    ID: US2
+    PRIORITY: 6
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Po wybraniu oferty, Niezalogowany Użytkownik zostaje przekierowany na stronę zakładania konta
+      2: Wyszukana oferta zostaje zablokowana i nie może zostać wybrana i wyszukana przez innych Użytkowników
+      3: Po założeniu konta, Użytkownik zostaje od razu przekierowany do wyszukanej oferty
+  Jako Niezalogowany Użytkownik, mogę zalogować się do Portalu:
+    ID: US3
+    PRIORITY: 1
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Użytkownik loguje się podając swoj email i hasło
+      2: Użytkownik ma możliwość zapamiętania hasła
+      3: Na ekranie logowania dostępny jest regulamin serwisu
+      4: Na ekranie logowania dostępny jest link do odzyskiwania hasła
+      5: Po poprawnym logowaniu, Użytkownik jest przekierowywany na stronę główną Portalu
+  Jako Zalogowany Użytkownik, mogę edytować dane swojego konta:
+    ID: US4
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Użytkownik może zmienić swój email na inny, dotychczas nieprzypisany do żadnego aktywnego konta
+      2: Użytkownik może zmienić swoje hasło, potwierdzając je podaniem starego i dwukrotnym podaniem nowego hasła
+      3: Użytkownik może zmienić dane swojej firmy
+      4: Użytkownik może zmienić typ swojego konta (zleceniodawca i/lub wynajmujący) 
+  Jako Zalogowany Użytkownik, mogę usunąć swoje konto:
+    ID: US5
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Użytkownik może usunąć swoje konto z Portalu
+      2: Przed usunięciem konta Użytkownik musi podać hasło do Portalu
+      3: Po usunięciu konta, profil Użytkownika jest oznaczony jako usunięty, nie wyświetla się jego nazwa i adres
+      4: Nie można reaktywować usuniętego konta
+NAME: Budowa Portalu
+ID: E2
+DESC: Lista stron, które może wyświetlić Użytkownik
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Użytkownik mogę nawigować po Portalu:
+    ID: US1
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Użytkownik może wyświetlić swój profil
+      2: Użytkownik może wyświetlić ustawienia aplikacji
+      3: Użytkownik może wyświetlić powiadomienia z zamówień i aplikacji
+      4: Użytkownik może włączyć czat 
+      5: Użytkownik może wyświetlić panel Floty Wynajmującego
+      6: Użytkownik może wyświetlić podsumowanie Zamówień, Przejazdów i Opinii na temat innego Użytkownika 
+      7: Użytkownik może otworzyć kreator nowej oferty
+  Jako Zleceniodawca mogę nawigować po Portalu:
+    ID: US2
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: W panelu wyszukiwania Zleceniodawca może znaleźć odpowiednie oferty
+      2: W panelu Zleceń Zleceniodawca może sprawdzić listę zarezerwowanych i historycznych Przejazdów
+      3: W panelu Firmy Zleceniodawca może zawrzeć informacje o swojej działalności
+  Jako Wynajmujący mogę nawigować po Portalu:
+    ID: US3
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: W panelu wyszukiwania Wynajmujący może przeglądać Oferty
+      2: W panelu Floty Wynajmujący może sprawdzić listę swoich Samochodów
+      3: W panelu Zamówień Wynajmujący może sprawdzić listę wynajętych Samochodów oraz historię zleceń
+      4: W panelu Kierowców Wynajmujący może sprawdzić listę Kierowców 
+NAME: Wyszukiwanie
+ID: E3
+DESC: Wyszukiwanie ofert wynajmu Samochodu i Ogłoszeń od Zleceniodawców
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Zleceniodawca mogę wyszukać ofertę wynajmu Samochodu:
+    ID: US1
+    PRIORITY: 1
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wyszukiwarka jest dostępna dla zalogowanych i niezalogowanych Użytkowników 
+      2: Wyszukiwarka jest dostępna po max dwóch kliknięciach, z każdego miejsca w Portalu 
+      3: Dla Zalogowanych Użytkowników, którzy ustawili oferty jako obserwowane, wyświetlają się one pod panelem wyszukiwania jako proponowane
+      4: W Wyszukiwarce Użytkownik określa czy chce szukać ogłoszeń od Zleceniodawców czy ofert od Wynajmujących
+  Jako Zalogowany Użytkownik mogę zapisać ofertę jako obserwowana:
+    ID: US2
+    PRIORITY: 5
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Klikając na ikonę Użytkownik jest w stanie zapisać daną ofertę lub ogłoszenie jako obserwowane
+      2: Lista obserwowanych ofert lub ogłoszeń jest dostępna z menu
+      3: Jeśli obserwowana oferta lub ogłoszeń spełnia kryteria wyszukiwania, pojawia się w wynikach jako pierwsza
+  Jako Użytkownik mogę przefiltrować wyniki wyszukiwania:
+    ID: US3
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Użytkownik może zdefiniować minimalną/maksymalną cenę usługi
+      2: Użytkownik może określić wielkość ładunku w kg/m3
+      3: Użytkownik może wybrać, czy wynajmuje kierowcę
+      4: Użytkownik może wskazać na mapie punkt startowy oraz docelowy
+      5: Użytkownik może wprowadzić adres startowy oraz docelowy wpisując go ręcznie
+      6: Użytkownik może wprowadzić datę początku i końca wynajmu
+      7: Użytkownik może wybrać typ Samochodu
+      8: Użytkownik może określić typ płatności za wynajem 
+      9: Użytkownik może określić minimalną Ocenę Użytkownika publikującego Ogłoszenie
+  Jako Wynajmujący mogę wyszukać Ogłoszenia Zleceniodawców:
+    ID: US4
+    PRIORITY: 1
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wyszukiwarka jest dostępna dla zalogowanych Wynjmujących 
+      2: Wyszukiwarka jest dostępna po max dwóch kliknięciach, z każdego miejsca w Portalu 
+      3: Ogłoszenie można zapisać jako obserwowane
+  Jako Wynajmujący mogę przefiltrować wyniki wyszukiwania:
+    ID: US5
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może zdefiniować minimalną/maksymalną cenę usługi z Ogłoszenia
+      2: Wynajmujący może określić wielkość ładunku w kg/m3
+      3: Wynajmujący może przefiltrować Ogłoszenia z opcją wynajmuje kierowcę
+      4: Wynajmujący może wskazać na mapie punkt i określić promień przeszukiwania
+      5: Wynajmujący może wprowadzić adres startowy i określić promień przeszukiwania
+      6: Wynajmujący może wprowadzić datę początku i końca wynajmu
+      7: Wynajmujący może wybrać typ Samochodu
+      8: Wynajmujący może określić typ płatności za wynajem 
+NAME: Budowa Floty Samochodów i listy Kierowców
+ID: E4
+DESC: Dodawanie Samochodów do swojej floty
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Wynajmujący mogę dodać Samochód do swojej Floty:
+    ID: US1
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może dodać nowy wpis lub skopiować inny istniejący
+      2: Wynajmujący może musi podać markę Samochodu z listy dostępnych marek lub dodać własną
+      3: Wynajmujący może musi podać model Samochodu z zawężonej wg. marek listy, lub dodać własną
+      4: Wynajmujący może określić nazwę własną Samochodu
+      5: Wynajmujący może podać numer rejestracyjny Samochodu
+      6: Wynajmujący może określić rocznik Samochodu
+      7: Wynajmujący może wprowadzić opis Samochodu
+      8: Wynajmujący musi określić ładowność Samochodu w kg/m3
+      9: Wynajmujący może musi określić cenę za wynajem Samochodu oraz warunki wynajmu
+      10: Wynajmujący może dodać zdjęcie Samochodu
+      11: Wynajmujący może określić ile Samochodu o takich samych parametrach posiada
+  Jako Wynajmujący mogę edytować Samochód w swojej Flocie:
+    ID: US2
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może zmienić markę Samochodu z listy dostępnych marek lub dodać własną
+      2: Wynajmujący może zmienić model Samochodu z zawężonej wg. marek listy, lub dodać własną
+      3: Wynajmujący może zmienić nazwę własną Samochodu
+      4: Wynajmujący może zmienić numer rejestracyjny Samochodu
+      5: Wynajmujący może zmienić rocznik Samochodu
+      6: Wynajmujący może zmienić opis Samochodu
+      7: Wynajmujący musi zmienić ładowność Samochodu w kg/m3
+      8: Wynajmujący może zmienić cenę za wynajem Samochodu oraz warunki wynajmu
+      9: Wynajmujący może zmienić lub usunąć zdjęcia Samochodu
+      10: Wynajmujący może zmienić informację o tym, ile Samochodów o takich samych parametrach posiada
+  Jako Wynajmujący mogę usunąć Samochód ze swojej Flocie:
+    ID: US3
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może usunąć Samochód ze swojej Floty
+      2: Przed usunięciem Wynajmujący zostanie zapytany o to, czy jest pewny swojej decyzji
+      3: Wynajmujący nie może usunąć Samochodów, które są obecnie wynajęte
+  Jako Wynajmujący mogę dodać Kierowcę:
+    ID: US4
+    PRIORITY: 3
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Wynajmujący musi podać nazwę Kierowcy
+      2: Wynajmujący może dodać numer telefonu do Kierowcy
+      3: Wynajmujący musi określić cenę i sposób płatności za usługi Kierowcy
+      4: Wynajmujący może przypisać Kierowcę do danego Samochodu z Floty. 
+  Jako Wynajmujący mogę usunąć Kierowcę:
+    ID: US5
+    PRIORITY: 4
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Wynajmujący może usunąć Kierowcę ze swojej listy Kierowców
+      2: Przed usunięciem Wynajmujący zostanie zapytany o to, czy jest pewny swojej decyzji
+      3: Wynajmujący nie może usunąć Kierowców, którzy są obecnie w wynajęci
+NAME: Dodawanie ofert wynajmu i publikowanie ogłoszeń
+ID: E5
+DESC: 
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Wynajmujący mogę dodać Przejazd:
+    ID: US1
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący musi określić punkt startu i końca kursu
+      2: Wynajmujący musi podać datę i godzinę startu kursu
+      3: Wynajmujący może dodać tytuł oferty
+      4: Wynajmujący musi wybrać Samochód z Floty, który wykona Przejazd
+      5: Wynajmujący może wybrać z listy Kierowcę, który wykona Przejazd
+      6: Wynajmujący musi podać minimalny próg ładowności Przejazdu
+      7: Wynajmujący musi podać inicjalną ładowność Samochodu
+      8: Wynajmujący może określić maksymalne parametry paczek (wymiary/waga)
+      9: Wynajmujący musi określić stawkę za Przejazd (inicjalna, za km, za usługi Kierowcy, inne)
+      10: Wynajmujący może określić status Przejazdu
+  Jako Wynajmujący mogę edytować Przejazd:
+    ID: US2
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może zmienić punkt startu i końca kursu, o ile Przejazd jest w statusie Zmieniany
+      2: Wynajmujący może zmienić cenę Przejazdu i metodę płatności, o ile Przejazd jest w statusie Zmieniany
+      3: Wynajmujący może zmienić datę Przejazdu, o ile Przejazd jest w statusie Zmieniany
+      4: Wynajmujący może zmienić tytuł Przejazdu
+      5: Wynajmujący może zmienić Samochód na inny, o ile spełnia wymogi ładunkowe aktualnie złożonych zamówień 
+      6: Wynajmujący może zmienić Kierowcę przypisanego do Przejazdu
+      7: Wynajmujący może zmienić parametry ładowności Samochodu, o ile nie naruszają one aktualnie złożonych zamówień
+      8: Wynajmujący może zmienić status Przejazdu 
+  Jako Wynajmujący mogę usunąć Ofertę:
+    ID: US3
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może usunąć Przejazd, o ile nie złożono na niego żadnego zamówienia lub ma status inny niż Anulowany lub Zmieniony
+      2: Przed usunięciem Wynajmujący zostanie zapytany o to, czy jest pewny swojej decyzji
+  Jako Wynajmujący mogę zmienić status Oferty:
+    ID: US4
+    PRIORITY: 3
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Wybór statusu "Zbieranie ofert" oznacza, iż Przejazd nie jest potwierdzony, trwa rezerwacja zamówień
+      2: Wybór statusu "Potwierdzony" oznacza, iż Przejazd odbędzie się w zadanym terminie
+      3: Wybór statusu "Rozpoczęty" oznacza, iż Przejazd jest aktywny i właśnie trwa
+      4: Wybór statusu "Zakończony" oznacza, iż Przejazd został zakończony z sukcesem i jest archiwizowany
+      5: Wybór statusu "Zawieszony" oznacza, iż Przejazd zostaje oznaczony jako niepotwierdzony, może przesunąć się jego data
+      6: Wybór statusu "Anulowany" oznacza, iż Przejazd nie odbędzie się
+      7: Wybór statusu "Zmieniany" powoduje, iż możliwa jest edycja warunków Przejazdu (destynacji, daty, ceny). Na wejście do statusu muszą zgodzić się Zleceniodawcy, którzy zgłosili się do Przejazdu
+      7: Zmiana statusu jest potwierdzana przesłaniem powiadomienia do Wynajmującego i Zleceniodawców
+      8: Statusy mogą się zmieniać automatycznie (np. status "Zakończony" o ile nie ustawiono inaczej, a Przejazd dobiegł końca)
+  Jako Wynajmujący mogę utworzyć Kurs:
+    ID: US5
+    PRIORITY: 3
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Kurs jest drogą prowadzącą ze startu do punktu zakończenia Przejazdu, odwiedzającym wszystkie punkty wyznaczone przez Zamawiających i Wynajmującego
+      2: Kurs może zostać wygenerowany automatycznie przez algorytm, który znajdzie najszybszą drogę między zadanymi punktami
+      3: Kurs może zostać utworzony ręcznie poprzez ułożenie kolejnych odwiedzanych punktów oraz dodanie własnych punktów
+      4: Dla każdego punktu na kursie może zostać określona godzina odwiedzenia
+      5: Wynajmujący widzi wszystkie punkty odbioru
+      6: Kurs może być utworzony tylko raz. Dla jednego Przejazdu dostępny jest tylko jeden Kurs
+  Jako Wynajmujący mogę edytować Kurs:
+    ID: US6
+    PRIORITY: 3
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Wynajmujący może zmienić kolejność i godziny odwiedzenia punktów między miejscem startu i punktem końcowym
+      2: Zmiana Kursu jest potwierdzana wysłaniem potwierdzenia do Wynajmującego i Zamawiających 
+  Jako Zamawiający mogę podejrzeć Kurs:
+    ID: US7
+    PRIORITY: 3
+    NOTES: none
+    STATUS: CONSIDER
+    AC:
+      1: Zamawiający może zobaczyć Kurs na panelu Przejazdu
+      2: Zamawiający widzi tylko punkt startowy i końcowy Kursu oraz miejsce, do którego zamówił Samochód
+      3: Zamawiający nie widzi punktów odbioru innych Zamawiających w danym Przejeździe
+      4: Zamawiający może sprawdzić godzinę odwiedzenia punktu 
+NAME: Publikowanie ogłoszeń przez Zleceniodawcę
+ID: E6
+DESC: 
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Zleceniodawca mogę dodać Ogłoszenie:
+    ID: US1
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Zleceniodawca może wybrać usługę wynajmu na czas lub odbioru ładunku
+      1: Zleceniodawca musi określić punkt odbioru ładunku lub Samochodu
+      2: Zleceniodawca może określić punkt nadania ładunku albo czas wynajmu samochodu
+      3: Wybierając usługę na czas, Zleceniodawca musi określić w jakim terminie chce wynajmować Samochód
+      4: Wybierając usługę na czas, Zleceniodawca może określić czy chce wynająć Kierowcę
+      5: Wybierając usługę odbioru ładunku, Zleceniodawca musi określić, kiedy może nadać ładunek
+      6: Zleceniodawca musi określić wymiary i wagę ładunku
+      7: Jeśli ładunek jest niespecyficzny lub niebezpieczny, Zleceniodawca musi dodać informacje o charakterze ładunku do Ogłoszenia
+  Jako Zleceniodawca mogę edytować Ogłoszenie:
+    ID: US2
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Zleceniodawca może zmienić tyup usługi wynajmu
+      2: Zleceniodawca może zmienić punkt odbioru ładunku lub Samochodu. 
+      3: Zleceniodawca może zmienić punkt nadania ładunku. 
+      4: Zleceniodawca może zmienić czas wynajmu Samochodu
+      5: Zleceniodawca może zmienić termin wynajmu Samochodu.
+      6: Zleceniodawca może zmienić informację o potrzebie wynajmu Kierowcy
+      7: Zleceniodawca może zmienić czas odbioru od siebie ładunku
+      8: Zleceniodawca może zmienić parametry ładunku
+      9: Zleceniodawca może zmienić opis ładunku 
+  Jako Zleceniodawca mogę usunąć Ogłoszenie:
+    ID: US3
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Zleceniodawca może usunąć Ogłoszenie. 
+      2: Przed usunięciem Ogłoszenia, Zleceniodawca zostanie zapytany o to, czy jest pewien swojej decyzji
+      3: Usuniętego Ogłoszenia nie można reaktywować
+      4: Nie można usunąć Ogłoszenia, które zostało zaakceptowane przez Zamawiającego.
+NAME: Rezerwowanie Przejazdu
+ID: E7
+DESC: 
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Zleceniodawca mogę zarezerwować Przejazd:
+    ID: US1
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Po wyborze Przejazdu Zleceniodawca może dodać szczegóły umowy
+      2: W przypadku wynajmu czasowego Wynajmujący musi podać miejsce startu oraz czas wynajmu
+      3: W przypadku wynajmu czasowego Wynajmujący może wynająć dodatkowo Kierowcę
+      4: W przypadku wyboru usługi transportu ładunku Zleceniodawca musi wybrać punkt startu i wyładunku
+      5: W przypadku wyboru usługi transportu ładunku Zleceniodawca musi wybrać termin odbioru ładunku
+      6: Jeśli dostępnych jest kilka opcji, Zleceniodawca musi wybrać metodę płatności za usługę
+      7: Zleceniodawca może wybrać formę rozliczenia za Przejazd (rachunek/faktura)
+      8: Do momentu zatwierdzenia Przejazdu, Zleceniodawca może zmienić parametry swojego zamówienia
+      9: Zarezerwowanie Przejazdu skutkuje zmniejszeniem dostępnej ładowności Samochodu lub zablokowaniem go do wynajmu czasowego
+  Jako Zleceniodawca mogę edytować zarezerwowany Przejazd:
+    ID: US2
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Póki finalnie nie zatwierdzono Przejazdu, Zleceniodawca może wprowadzać zmiany w Zamówieniu
+      2: Zleceniodawca może zmienić czas wynajmu Samochodu
+      3: Zleceniodawca może zmienić datę Przejazdu 
+      4: Zleceniodawca może zmienić gabaryty i masę ładunku, o ile mieszczą się one w dostępnej ładowności Samochodu
+      5: Zleceniodawca może określić, czy potrzebuje wynająć Kierowcę
+      6: Zleceniodawca może zmienić opcję płatności spośród wybranych przez Wynajmującego
+  Jako Zleceniodawca mogę anulować rezerwację Przejazu:
+    ID: US3
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Póki finalnie nie zatwierdzono Przejazdu, Zleceniodawca może anulować Zamówienie Przejazdu
+      2: Zleceniodawca zostanie zapytany, czy jest pewien swojej decyzji 
+      3: Po anulowaniu Zamówienia, zmianie ulegają dostępna ładowność Samochodu
+      4: Po anulowaniu Zamówienia, Samochód jest odblokowany do kolejnych rezerwacji
+NAME: Rezerwowanie Oferty
+ID: E8
+DESC: 
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Wynajmujący mogę zarezerwować do realizacji Ofertę Zleceniodawcy:
+    ID: US1
+    PRIORITY: 2
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może wybrać do realizacji Ofertę Zleceniodawcy
+      2: Jeśli nie podano konkretnego czasu rozpoczęcia usługi, Wynajmujący może określić własną propozycję, o ile znajduje się ona w zakresie zadanym przez Zleceniodawcę
+      3: Wynajmujący może wybrać Samochód z Floty, który obsłuży Zamówienie
+      4: Wynajmujący może wybrać Kierowcę z listy, który obsłuży Zamówienie
+      5: Rezerwując Ofertę tworzony jest automatycznie Przejazd. Wynajmujący może określić, czy ma on zostać opublikowany do dalszych rezerwacji. 
+  Jako Wynajmujący mogę anulować realizację Ofertę Zleceniodawcy:
+    ID: US2
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Wynajmujący może anulować zamówienie zgodnie z zasadami anulowania Przejazdu
+NAME: Ocena Przejazdów i innych Użytkowników
+ID: E9
+DESC: 
+NOTES: none
+STATUS: TODO
+USER STORIES:
+  Jako Użytkownik mogę ocenić Wynajmującego lub Zleceniodawcę:
+    ID: US1
+    PRIORITY: 3
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Po zakończeniu usługi, w panelu jej podsumowania pojawia się opcja Oceny 
+      2: Panel Oceny usługi jest widoczny w historii Przejazdów 2 tygodnie po jej dacie zakończenia
+      3: Ocena odbywa się poprzez wybór noty w skali od 1 do 5, gdzie 1 to najniższa, a 5 najwyższa Ocena
+      4: Brak Oceny nie jest określany jako ocena 0
+      5: Wynajmujący może ocenić Zleceniodawcę
+      6: Zleceniodawca może ocenić osobno Wynajmującego, Samochód i Kierowcę
+      7: Dopóki panel dodawania Oceny, dopóty jest możliwe edytowanie noty
+  Jako Użytkownik mogę dodać od Oceny komentarz na temat Użytkownika lub usługi:
+    ID: US2
+    PRIORITY: 4
+    NOTES: none
+    STATUS: TODO
+    AC:
+      3: Komentarze wystawione do Ocen usług są widoczne na liście pod ich Oceną 
+      2: Komentarze wystawione do Ocen Użytkowników są widoczne po wybraniu odpowiedniej opcji w profilu głównym Użytkownika
+      4: Komentarze nie mogą być usunięte przez Użytkownika
+      5: Komentarz może zostać zgłoszony przez Użytkownika do Moderatora 
+      6: Komentarz może zostać usunięty przez Moderatora jeśli został uznany za sprzeczny z regułami Portalu, jest zafałszowany lub jest wynikiem ataku na Użytkownika
+  Jako Użytkownik mogę śledzić Oceny i komentarze innych Użytkowników:
+    ID: US3
+    PRIORITY: 4
+    NOTES: none
+    STATUS: TODO
+    AC:
+      1: Ocena Użytkownika jest wyświetlana w jego Profilu głównym i jest widoczna dla wszystkich Użytkowników
+      2: Oceny nie można ukryć
+      3: Widoczne jest kilka ostatnich komentarzy
+      4: Pozostałe komentarze są dostępne po rozwinięciu listy
+      5: Użytkownik może zgłosić Komentarz, który został wystawiony jemu lub przypisanym doń Samochodom i Kierowcom
