@@ -10,7 +10,7 @@ Move your pack
 Dokumentacja techniczna
 * User stories [US](/Documentation/User_Stories_Transport_app.yml)
 * UML [UML](/Documentation/UML_class_chart.vsdx)
-* Analiza biznesowa [Analiza biznesowa](/Documentation/analiza biznesowa.docx)
+* Analiza biznesowa [Analiza biznesowa](/Documentation/analiza_biznesowa.docx)
 * Analiza funkcjonalna [Analiza funkcjonalna](/Documentation/200302_analiza_funkcjonalna.docx)
 * Zadania [Zadania](/Documentation/Zadania.docx)
 
