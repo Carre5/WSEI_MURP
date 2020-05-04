@@ -26,23 +26,32 @@ import { CommentItemComponent } from './features/comments/comment-list/comment-i
 import { UserDashboardComponent } from './features/pages/user-dashboard/user-dashboard.component';
 import { CompaniesListComponent } from './features/pages/companies-list/companies-list.component';
 import { OrderSearchComponent } from './features/pages/order-search/order-search.component';
-import { LoginPageComponent } from './core/admin/login-page/login-page.component';
+import { LoginPageComponent } from './core/admin/login/login-page/login-page.component';
 import { AccountSetupComponent } from './core/admin/account-setup/account-setup.component';
 import { UserProfileComponent } from './core/admin/user-profile/user-profile.component';
 import { SettingsPageComponent } from './core/admin/settings-page/settings-page.component';
+
+import { LayoutComponent } from './shared/components/layout/layout.component';
 import { MenuBarComponent } from './shared/components/layout/menu-bar/menu-bar.component';
 import { HamburgerMenuComponent } from './shared/components/layout/menu-bar/hamburger-menu/hamburger-menu.component';
 import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.component';
 import { MainPanelComponent } from './shared/components/layout/main-panel/main-panel.component';
 import { PopupComponent } from './shared/components/layout/popup/popup.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     OrdersComponent,
     OrderDetailComponent,
     OrderListComponent,
@@ -65,24 +74,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserDashboardComponent,
     CompaniesListComponent,
     OrderSearchComponent,
-    LoginPageComponent,
     AccountSetupComponent,
     UserProfileComponent,
     SettingsPageComponent,
-    MenuBarComponent,
-    HamburgerMenuComponent,
-    SidebarComponent,
-    MainPanelComponent,
-    PopupComponent,
 
-    FlexLayoutModule
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    FlexLayoutModule,
+
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule
   
   ],
   providers: [],
