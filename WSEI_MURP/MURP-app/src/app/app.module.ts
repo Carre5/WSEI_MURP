@@ -30,11 +30,15 @@ import { LoginPageComponent } from './core/admin/login-page/login-page.component
 import { AccountSetupComponent } from './core/admin/account-setup/account-setup.component';
 import { UserProfileComponent } from './core/admin/user-profile/user-profile.component';
 import { SettingsPageComponent } from './core/admin/settings-page/settings-page.component';
-import { MenuBarComponent } from './core/layout/menu-bar/menu-bar.component';
-import { HamburgerMenuComponent } from './core/layout/menu-bar/hamburger-menu/hamburger-menu.component';
-import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
-import { MainPanelComponent } from './core/layout/main-panel/main-panel.component';
-import { PopupComponent } from './core/layout/popup/popup.component';
+import { MenuBarComponent } from './shared/components/layout/menu-bar/menu-bar.component';
+import { HamburgerMenuComponent } from './shared/components/layout/menu-bar/hamburger-menu/hamburger-menu.component';
+import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.component';
+import { MainPanelComponent } from './shared/components/layout/main-panel/main-panel.component';
+import { PopupComponent } from './shared/components/layout/popup/popup.component';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -69,12 +73,17 @@ import { PopupComponent } from './core/layout/popup/popup.component';
     HamburgerMenuComponent,
     SidebarComponent,
     MainPanelComponent,
-    PopupComponent
+    PopupComponent,
+
+    FlexLayoutModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
